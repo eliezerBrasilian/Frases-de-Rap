@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "558299467141",
+    "project_id": "frases-de-rap-b2573",
+    "storage_bucket": "frases-de-rap-b2573.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:558299467141:android:d9aeb8d44c1e2adc05c8ec",
+        "android_client_info": {
+          "package_name": "com.rap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "558299467141-arin534pcplpoupvd4ir7iuflodu781f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhBYaNpbU_Rnl00uuIlqv1FuUwqgtMkJE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "558299467141-arin534pcplpoupvd4ir7iuflodu781f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
