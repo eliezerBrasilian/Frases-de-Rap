@@ -1,7 +1,13 @@
 import {Button, View, Text, StatusBar, SafeAreaView} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import {useState, useEffect} from 'react';
-import {Container, Titulo} from './style';
+import {
+  Container,
+  TituloEsquerda,
+  Titulo,
+  BtnProcurarMais,
+  BtnProcurarMaisText,
+} from './style';
 import {strings} from '../../assets/strings';
 import {Card, CardFrase, CardCantor} from '../../components';
 
@@ -71,11 +77,18 @@ export default Home = () => {
   return (
     <Container source={imagens[0]} resizeMode="cover">
       <StatusBar translucent={true} backgroundColor="transparent" />
-      <Titulo>{strings.tituLo}</Titulo>
+      <TituloEsquerda>
+        <Titulo>{strings.tituLo}</Titulo>
+      </TituloEsquerda>
       <Card>
         <CardFrase>{fraseAleatoria}</CardFrase>
         <CardCantor>{autorFraseAleatoria}</CardCantor>
       </Card>
+      <BtnProcurarMais>
+        <BtnProcurarMaisText>
+          {strings.procurar_mais_frases}
+        </BtnProcurarMaisText>
+      </BtnProcurarMais>
     </Container>
   );
 };

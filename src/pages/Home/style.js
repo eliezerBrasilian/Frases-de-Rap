@@ -10,11 +10,35 @@ const Container = styled.ImageBackground`
   align-items: center;
   justify-content: space-between;
 `;
-
+const TituloEsquerda = styled.View`
+  width: 100%;
+  align-items: flex-start;
+`;
 const Titulo = styled.Text`
   font-size: 30px;
   color: #fff;
   font-weight: 800;
 `;
 
-export {Container, Titulo};
+const BtnProcurarMais = styled.TouchableOpacity`
+  width: 100%;
+  background-color: ${colors.fundo_btn};
+  padding: 15px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+`;
+
+const BtnProcurarMaisText = styled.Text`
+  font-size: 22px;
+  color: white;
+  font-weight: 400;
+`;
+
+export {
+  Container,
+  TituloEsquerda,
+  Titulo,
+  BtnProcurarMais,
+  BtnProcurarMaisText,
+};
