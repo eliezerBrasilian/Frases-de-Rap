@@ -9,11 +9,13 @@ import {strings} from '../../assets/strings';
 import {useEffect, useState} from 'react';
 import {FlatList, StatusBar} from 'react-native';
 import CategoriasCards from '../CategoriasStack/CategoriasCards';
+
 import firestore from '@react-native-firebase/firestore';
-import {Card, CardFrase, CardCantor} from '../../components/FraseCard';
+import ExibeFeed from '../../components/ExibeFeed';
 export default Feed = () => {
   const categorias_db = firestore().collection('Categorias');
   const frases_db = firestore().collection('Frases');
+
   useEffect(() => {
     function LoadCategorias() {
       categorias_db.onSnapshot(querySnapshot => {
@@ -73,12 +75,3 @@ export default Feed = () => {
     </Container>
   );
 };
-
-function ExibeFeed({dado}) {
-  return (
-    <Card marginTopo={18}>
-      <CardFrase>{dado.frase}</CardFrase>
-      <CardCantor>{dado.cantor}</CardCantor>
-    </Card>
-  );
-}
