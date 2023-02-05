@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {colors} from '../assets/colors';
+import {colors} from '../../assets/colors';
 const Card = styled.View`
   width: 100%;
   background-color: ${colors.fundo_card};
@@ -7,6 +7,7 @@ const Card = styled.View`
   border-radius: 9px;
   justify-content: center;
   align-items: center;
+  margin-top: ${props => props.marginTopo}px;
 `;
 const CardFrase = styled.Text`
   font-size: 20px;

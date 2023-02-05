@@ -9,7 +9,8 @@ import {
   BtnProcurarMaisText,
 } from './style';
 import {strings} from '../../assets/strings';
-import {Card, CardFrase, CardCantor} from '../../components';
+import {Card, CardFrase, CardCantor} from '../../components/FraseCard';
+import Feed from '../Feed';
 
 export default Home = () => {
   const [frases, setFrases] = useState([]);
@@ -33,6 +34,8 @@ export default Home = () => {
   const [fraseAleatoria, setFraseAleatoria] = useState('');
   const [autorFraseAleatoria, setAutorFraseAleatoria] = useState('');
 
+  const [telaPrincipal, setTelaPrincipal] = useState(false);
+
   useEffect(() => {
     async function buscaDados() {
       db.onSnapshot(querySnapshot => {
@@ -44,7 +47,7 @@ export default Home = () => {
         //percorrendo os vetores (keys)
         querySnapshot.forEach(i => {
           //no primeiro console eu consigo friamente obter os nomes desses vetores (suas keys)
-          console.log('key: ' + i.id + ' frase: ' + i.data().frase);
+          //console.log('key: ' + i.id + ' frase: ' + i.data().frase);
           //ja nesse segundo console eu entrei dentro do vetor e acessei a propriedade frase
 
           aux.push({
@@ -73,22 +76,23 @@ export default Home = () => {
     geraFraseAleatoria();
   }, []);
 
-  function randomFrase() {}
-  return (
-    <Container source={imagens[0]} resizeMode="cover">
-      <StatusBar translucent={true} backgroundColor="transparent" />
-      <TituloEsquerda>
-        <Titulo>{strings.tituLo}</Titulo>
-      </TituloEsquerda>
-      <Card>
-        <CardFrase>{fraseAleatoria}</CardFrase>
-        <CardCantor>{autorFraseAleatoria}</CardCantor>
-      </Card>
-      <BtnProcurarMais>
-        <BtnProcurarMaisText>
-          {strings.procurar_mais_frases}
-        </BtnProcurarMaisText>
-      </BtnProcurarMais>
-    </Container>
-  );
+  if (telaPrincipal)
+    return (
+      <Container source={imagens[0]} resizeMode="cover">
+        <StatusBar translucent={true} backgroundColor="transparent" />
+        <TituloEsquerda>
+          <Titulo>{strings.tituLo}</Titulo>
+        </TituloEsquerda>
+        <Card marginTopo={0}>
+          <CardFrase>{fraseAleatoria}</CardFrase>
+          <CardCantor>{autorFraseAleatoria}</CardCantor>
+        </Card>
+        <BtnProcurarMais>
+          <BtnProcurarMaisText>
+            {strings.procurar_mais_frases}
+          </BtnProcurarMaisText>
+        </BtnProcurarMais>
+      </Container>
+    );
+  else return <Feed />;
 };
