@@ -1,6 +1,6 @@
 import {useRoute} from '@react-navigation/native';
 import {Container, Header, VoltarTitulo} from './style';
-import {FlatList} from 'react-native';
+import {FlatList, ActivityIndicator} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import {useEffect, useState} from 'react';
 import ExibeFeed from '../../../components/ExibeFeed';
@@ -9,6 +9,7 @@ import {useNavigation} from '@react-navigation/native';
 export default CategoriaFeed = () => {
   const [frases, setFrases] = useState(['']);
   const db_frases = firestore().collection('Frases');
+  const [loadingFrases, setLoadingFrases] = useState(true);
   const nav = useNavigation();
   useEffect(() => {
     function loadFrases() {
@@ -25,6 +26,7 @@ export default CategoriaFeed = () => {
             });
           });
           setFrases(aux);
+          setLoadingFrases(false);
         });
     }
     loadFrases();
@@ -36,10 +38,14 @@ export default CategoriaFeed = () => {
         <FontAwesome name="chevron-left" color="#000" size={40} />
         <VoltarTitulo>Voltar</VoltarTitulo>
       </Header>
-      <FlatList
-        data={frases}
-        keyExtractor={item => item.key}
-        renderItem={({item}) => <ExibeFeed dado={item} />}></FlatList>
+      {loadingFrases ? (
+        <ActivityIndicator size={50} color="red" />
+      ) : (
+        <FlatList
+          data={frases}
+          keyExtractor={item => item.key}
+          renderItem={({item}) => <ExibeFeed dado={item} />}></FlatList>
+      )}
     </Container>
   );
 };

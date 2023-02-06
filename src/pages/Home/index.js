@@ -1,4 +1,4 @@
-import {Button, View, Text, StatusBar, SafeAreaView} from 'react-native';
+import {StatusBar, ActivityIndicator} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import {useState, useEffect} from 'react';
 import {
@@ -30,32 +30,32 @@ export default Home = () => {
   const [imagens, setImagens] = useState([
     require('../../assets/images/unsplash_1.jpg'),
     require('../../assets/images/unsplash_2.jpg'),
+    require('../../assets/images/unsplash_3.jpg'),
+    require('../../assets/images/unsplash_4.jpg'),
+    require('../../assets/images/unsplash_5.jpg'),
   ]);
+  const [imagemAleatoria, setImagemAleatoria] = useState('');
   const [fraseAleatoria, setFraseAleatoria] = useState('');
   const [autorFraseAleatoria, setAutorFraseAleatoria] = useState('');
 
-  const [telaPrincipal, setTelaPrincipal] = useState(false);
+  const [telaPrincipal, setTelaPrincipal] = useState(true);
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function buscaDados() {
       db.onSnapshot(querySnapshot => {
         const aux = [];
-
-        //dentro da collection Frases
-        //.log('quantidade: ' + querySnapshot.size);
         setQtd(querySnapshot.size);
-        //percorrendo os vetores (keys)
-        querySnapshot.forEach(i => {
-          //no primeiro console eu consigo friamente obter os nomes desses vetores (suas keys)
-          //console.log('key: ' + i.id + ' frase: ' + i.data().frase);
-          //ja nesse segundo console eu entrei dentro do vetor e acessei a propriedade frase
 
+        querySnapshot.forEach(i => {
           aux.push({
             key: i.id,
             ...i.data(),
           });
         });
         setFrases(aux);
+        setLoading(false);
       });
     }
     function geraFraseAleatoria() {
@@ -72,22 +72,37 @@ export default Home = () => {
         } else setFraseAleatoria(aux[Math.floor(Math.random() * q.size)]);
       });
     }
+    function geraFotoAleatoriamente() {
+      let index = Math.floor(Math.random() * 5);
+      setImagemAleatoria(imagens[index]);
+      //setLoading(false);
+    }
+    geraFotoAleatoriamente();
     buscaDados();
     geraFraseAleatoria();
   }, []);
 
+  function goToFeed() {
+    setTelaPrincipal(false);
+  }
+
   if (telaPrincipal)
     return (
-      <Container source={imagens[0]} resizeMode="cover">
+      <Container source={imagemAleatoria} resizeMode="cover">
         <StatusBar translucent={true} backgroundColor="transparent" />
         <TituloEsquerda>
           <Titulo>{strings.tituLo}</Titulo>
         </TituloEsquerda>
-        <Card marginTopo={0}>
-          <CardFrase>{fraseAleatoria}</CardFrase>
-          <CardCantor>{autorFraseAleatoria}</CardCantor>
-        </Card>
-        <BtnProcurarMais>
+        {loading ? (
+          <ActivityIndicator size={70} color="red" />
+        ) : (
+          <Card marginTopo={0}>
+            <CardFrase>{fraseAleatoria}</CardFrase>
+            <CardCantor>{autorFraseAleatoria}</CardCantor>
+          </Card>
+        )}
+
+        <BtnProcurarMais onPress={goToFeed}>
           <BtnProcurarMaisText>
             {strings.procurar_mais_frases}
           </BtnProcurarMaisText>

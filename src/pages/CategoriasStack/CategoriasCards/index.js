@@ -1,6 +1,7 @@
 import {Button, Card} from './style';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
+import {ActivityIndicator} from 'react-native';
 export default CategoriasCard = ({dado}) => {
   const nav = useNavigation();
   function goToCategoriaFeed() {

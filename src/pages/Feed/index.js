@@ -7,7 +7,7 @@ import {
 } from './style';
 import {strings} from '../../assets/strings';
 import {useEffect, useState} from 'react';
-import {FlatList, StatusBar} from 'react-native';
+import {FlatList, StatusBar, ActivityIndicator} from 'react-native';
 import CategoriasCards from '../CategoriasStack/CategoriasCards';
 
 import firestore from '@react-native-firebase/firestore';
@@ -15,6 +15,8 @@ import ExibeFeed from '../../components/ExibeFeed';
 export default Feed = () => {
   const categorias_db = firestore().collection('Categorias');
   const frases_db = firestore().collection('Frases');
+  const [loadingCategorias, setLoadingCategorias] = useState(true);
+  const [loadingFrases, setLoadingFrases] = useState(true);
 
   useEffect(() => {
     function LoadCategorias() {
@@ -30,6 +32,7 @@ export default Feed = () => {
           });
         });
         setFotos(aux);
+        setLoadingCategorias(false);
       });
     }
     function LoadFrases() {
@@ -42,6 +45,7 @@ export default Feed = () => {
           });
         });
         setFrases(aux);
+        setLoadingFrases(false);
       });
     }
     LoadCategorias();
@@ -59,19 +63,29 @@ export default Feed = () => {
       <Categorias>
         <TituloEsquerda>
           <CategoriasTitulo>{strings.categorias}</CategoriasTitulo>
-          <FlatList
-            showsHorizontalScrollIndicator={false}
-            horizontal={true}
-            data={fotos}
-            keyExtractor={item => item.key}
-            renderItem={({item}) => <CategoriasCards dado={item} />}></FlatList>
+          {loadingCategorias ? (
+            <ActivityIndicator size={50} color="red" />
+          ) : (
+            <FlatList
+              showsHorizontalScrollIndicator={false}
+              horizontal={true}
+              data={fotos}
+              keyExtractor={item => item.key}
+              renderItem={({item}) => (
+                <CategoriasCards dado={item} />
+              )}></FlatList>
+          )}
         </TituloEsquerda>
       </Categorias>
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        data={frases}
-        keyExtractor={item => item.key}
-        renderItem={({item}) => <ExibeFeed dado={item} />}></FlatList>
+      {loadingFrases ? (
+        <ActivityIndicator size={50} color="red" />
+      ) : (
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={frases}
+          keyExtractor={item => item.key}
+          renderItem={({item}) => <ExibeFeed dado={item} />}></FlatList>
+      )}
     </Container>
   );
 };
