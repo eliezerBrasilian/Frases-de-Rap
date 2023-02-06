@@ -3,7 +3,12 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {TouchableOpacity, View} from 'react-native';
 export default function ExibeFeed({dado}) {
   return (
-    <View style={{alignItems: 'center', justifyContent: 'center'}}>
+    <View
+      style={{
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginHorizontal: 19,
+      }}>
       <Card marginTopo={18}>
         <CardFrase>{dado.frase}</CardFrase>
         <CardCantor>{dado.cantor}</CardCantor>
