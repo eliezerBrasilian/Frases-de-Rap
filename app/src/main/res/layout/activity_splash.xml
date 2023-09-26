@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.historias.SplashActivity">
+
+    <ImageView
+        android:id="@+id/bg_activity_splash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/unsplash_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Frases de Rap"
+        android:fontFamily="@font/damion"
+        android:textColor="#fff"
+        android:textSize="30sp"
+        android:textFontWeight="500"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="10dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/frase_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:background="@drawable/background_linear_layout_card"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/btn_procurar_mais_frases"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo"
+        app:layout_constraintVertical_bias="0.5"
+        android:layout_marginHorizontal="10dp">
+
+        <TextView
+            android:id="@+id/frase"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="O nosso destino é uma caixa de surpresa"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/roboto"
+            android:textSize="20sp"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/cantor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Haikaiss"
+            android:fontFamily="@font/montserrat_alternates"
+            android:textSize="18sp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#fff"
+            android:layout_marginTop="15dp"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_procurar_mais_frases"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Procurar mais frases"
+        android:textSize="19sp"
+        android:padding="10dp"
+        android:background="@drawable/btn_procurar_mais"
+        android:textAllCaps="false"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="#fff"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

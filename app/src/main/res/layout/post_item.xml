@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frase_card"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_linear_layout_card"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:layout_marginTop="10dp"
+    >
+
+    <TextView
+        android:id="@+id/frase"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/roboto"
+        android:text="O nosso destino é uma caixa de surpresa"
+        android:textColor="#fff"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/cantor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/montserrat_alternates"
+        android:text="Haikaiss"
+        android:textColor="#fff"
+        android:textSize="18sp" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
