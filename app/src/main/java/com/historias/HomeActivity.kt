@@ -16,6 +16,7 @@ import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import de.hdodenhof.circleimageview.CircleImageView
 import principal.fraseparastatus.frasesderapparastatus.R
 
@@ -74,11 +75,14 @@ class HomeActivity : AppCompatActivity() {
         val rap = findViewById<CircleImageView>(R.id.rap)
         val trap = findViewById<CircleImageView>(R.id.trap)
 
-
         americano.setOnClickListener { goToSelectedPostActivity("Americano") }
         rap.setOnClickListener { goToSelectedPostActivity("Rap") }
         trap.setOnClickListener { goToSelectedPostActivity("Trap") }
 
+        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        fab.setOnClickListener {
+            Log.i("fab","clicked")
+        }
     }
 
     private fun goToSelectedPostActivity(categoriaId:String){

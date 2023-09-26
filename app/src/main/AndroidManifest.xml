@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,11 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Historias"
         tools:targetApi="31">
-
+        <activity
+            android:name="com.historias.AddPostActivity"
+            android:exported="false" />
         <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-4318787550457876~7119863968"/>
+            android:value="ca-app-pub-4318787550457876~7119863968" />
+
         <activity
             android:name="com.historias.SelectedPostActivity"
             android:exported="false" />
