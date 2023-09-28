@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="fundo_card">#33145A</color>
     <color name="btn_procurar_mais">#FF3232</color>
+    <color name="link">#3a86ff</color>
+    <color name="input_hint">#8e9aaf</color>
 </resources>

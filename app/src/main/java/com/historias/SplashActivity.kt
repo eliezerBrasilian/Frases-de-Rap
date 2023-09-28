@@ -14,6 +14,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+        val btn:Button = findViewById(R.id.btn_procurar_mais_frases)
 
         val frases = arrayOf(
             Frase("Toda de Gucci, ela só anda chique.","Jé Santiago"),
@@ -43,7 +44,7 @@ class SplashActivity : AppCompatActivity() {
         val imagem = imagensFundo[indexRandom]
         bgActivity.setImageResource(imagem.imagemId)
 
-        val btn:Button = findViewById(R.id.btn_procurar_mais_frases)
+
         btn.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)

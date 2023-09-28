@@ -3,6 +3,7 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/chewy</item>
         <item>@font/damion</item>
+        <item>@font/galada</item>
         <item>@font/montserrat_alternates</item>
         <item>@font/montserrat_alternates_medium</item>
         <item>@font/roboto</item>

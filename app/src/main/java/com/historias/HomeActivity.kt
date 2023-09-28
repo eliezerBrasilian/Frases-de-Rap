@@ -1,5 +1,6 @@
 package com.historias
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -80,11 +81,21 @@ class HomeActivity : AppCompatActivity() {
         trap.setOnClickListener { goToSelectedPostActivity("Trap") }
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
+        val sharedPrefs = getSharedPreferences("Prefs",Context.MODE_PRIVATE)
         fab.setOnClickListener {
             Log.i("fab","clicked")
+            val userId = sharedPrefs.getString("user_id",null);
+            if(userId == null){
+                goToLoginActivity()
+            }
+            Log.i("userId",(userId == null).toString())
         }
     }
 
+    private fun goToLoginActivity(){
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+    }
     private fun goToSelectedPostActivity(categoriaId:String){
         val intent = Intent(this, SelectedPostActivity::class.java)
         intent.putExtra("KEY",categoriaId)

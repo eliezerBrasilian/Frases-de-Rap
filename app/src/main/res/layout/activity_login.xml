@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.historias.AddPostActivity">
+    tools:context="com.historias.LoginActivity"
+    android:background="@color/white"
+    >
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,6 +19,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="15dp"
+            android:paddingTop="10dp"
             android:gravity="center_horizontal"
             >
             <TextView
@@ -25,54 +28,78 @@
                 android:text="Olá, rapper!"
                 android:textSize="30sp"
                 android:textColor="@color/black"
+                android:layout_gravity="start"
+                android:fontFamily="@font/montserrat_alternates_medium"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Faça, já seu login!"
+                android:textSize="23sp"
+                android:textColor="@color/black"
+                android:layout_gravity="start"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto"
                 />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Digite seu email"
+                android:textColorHint="@color/input_hint"
                 android:textSize="19sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/edit_input"
                 android:inputType="textEmailAddress"
+                android:fontFamily="@font/galada"
                 />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Digite sua senha"
+                android:textColorHint="@color/input_hint"
                 android:textSize="19sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edit_input"
                 android:inputType="textPassword"
+                android:fontFamily="@font/galada"
                 />
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Entrar"
-                    android:textSize="19sp"
-                    android:textColor="@color/white"
-                    android:textAllCaps="false"
-                    android:padding="15dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/btn_signin"
-                    />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Entrar"
+                android:textSize="19sp"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:padding="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_signin"
+                android:fontFamily="@font/montserrat_alternates_medium"
+                />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Esqueci minha senha"
-                android:textSize="17sp"
-                android:textColor="#f07167"
                 android:layout_gravity="end"
                 android:layout_marginTop="10dp"
-                />
+                android:clickable="true"
+                android:text="Esqueci minha senha"
+                android:textColor="#f07167"
+                android:textSize="17sp"
+                android:height="48dp"/>
+
             <TextView
+                android:id="@+id/dont_have_account_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Não tenho conta"
-                android:textSize="19sp"
-                android:textColor="@color/link"
                 android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:fontFamily="@font/roboto"
+                android:text="Não tenho conta"
+                android:textColor="@color/link"
+                android:textSize="19sp"
+                android:height="48dp"
                 />
         </LinearLayout>
     </ScrollView>
